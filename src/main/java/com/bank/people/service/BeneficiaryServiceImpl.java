@@ -75,7 +75,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 		if (!customer.isPresent()) {
 			throw new CustomerNotFoundException(BankConstants.CUSTOMER_NOT_FOUND);
 		}
-		Optional<List<Beneficiary>> beneficiaryList = beneficiaryRepository.findByCustomerId(customerId);
+		Optional<List<Beneficiary>> beneficiaryList = beneficiaryRepository.findByCustomerId(customerId,paging);
 		if (!beneficiaryList.isPresent()) {
 			throw new BeneficiariesNotFound(BankConstants.NO_BENEFICIARY_FOUND);
 		}
@@ -86,7 +86,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 		beneficiaryList.get().forEach(beneficiary -> {
 			BeneficiaryResponseDto beneficiaryResponseDto = new BeneficiaryResponseDto();
 			beneficiaryResponseDto.setBeneficiaryName(beneficiary.getBeneficiaryName());
-			beneficiaryResponseDto.setIbanNumber("ESOP 1234");
+			beneficiaryResponseDto.setIbanNumber(beneficiary.getBeneficiaryIbanNumber());
 			beneficiaryResponseDto
 					.setBankName(bankMap.get(Integer.parseInt(beneficiaryResponseDto.getIbanNumber().substring(5, 9))));
 			beneficiaryResponseDtos.add(beneficiaryResponseDto);

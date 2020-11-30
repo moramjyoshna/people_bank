@@ -12,5 +12,5 @@ import com.bank.people.entity.Beneficiary;
 @Repository
 public interface BeneficiaryRepository extends JpaRepository<Beneficiary, Integer> {
 
-	Optional<List<Beneficiary>> findByCustomerId(Integer customerId);
+	Optional<List<Beneficiary>> findByCustomerId(Integer customerId,Pageable pagable);
 }
