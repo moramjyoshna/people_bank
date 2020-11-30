@@ -20,4 +20,12 @@ public class BankConstants {
 	public static final String IBAN_NUMBER_DOES_NOT_EXISTS = "IBAN Number does not exist!";
 	public static final String IBAN_NUMBER_NOT_FOUND = "IBAN Number does not exist!";
 	public static final String FAILED_TO_UPDATE_BENEFICIARY = "Failed to update Beneficiary";
+	public static final Integer SIZE = 5;
+	public static final String NO_BENEFICIARY_FOUND = "No Beneficiaries found for the customer";
+	
+	public static final String LOG_GET_BENEFICIARY_LIST = "Getting Beneficiary list";
+    public static final String LOG_EXIST_BENEFICIARY_LIST = "Exiting getBeneficiaryList method";
+    public static final String LOG_EXIST_BENEFICIARY_CONTROLLER = "Entered into Benifitiary controller getBeneficiaryList method ";
+    public static final String LOG_EXISTING_BENEFICIARY_CONTROLLER = "Exiting from Benifitiary controller getBeneficiaryList method ";
+    public static final String VIEW_CUSTOMER_NOT_FOUND = "Given customer is not found";
 }

@@ -3,7 +3,6 @@ package com.bank.people.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Optional;
 
@@ -18,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.bank.people.controller.BeneficiaryController;
 import com.bank.people.dto.UpdateBeneficiaryRequestDto;
 import com.bank.people.dto.UpdateBeneficiaryResponseDto;
 import com.bank.people.entity.Account;
