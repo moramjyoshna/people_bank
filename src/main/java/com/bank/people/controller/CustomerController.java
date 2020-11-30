@@ -19,7 +19,7 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@PostMapping("/login")
-	public ResponseEntity<CustomerResponseDto> userLogin(@RequestBody CustomerRequestDto customerRequestDto)
+	public ResponseEntity<CustomerResponseDto> customerLogin(@RequestBody CustomerRequestDto customerRequestDto)
 	throws CustomerNotFoundException{
 		CustomerResponseDto responseDto = customerService.customerLogin(customerRequestDto);
 		return new ResponseEntity<>(responseDto, HttpStatus.OK);
