@@ -17,6 +17,7 @@ public class Beneficiary {
 	private Integer customerId;
 	private Integer accountId;
 	private String beneficiaryIbanNumber;
+	private Integer bankId;
 
 	public Integer getBeneficiaryId() {
 		return beneficiaryId;
@@ -36,6 +37,12 @@ public class Beneficiary {
 
 	public Integer getCustomerId() {
 		return customerId;
+
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+
 	}
 
 	public Integer getAccountId() {
@@ -53,8 +60,12 @@ public class Beneficiary {
 		this.beneficiaryIbanNumber = beneficiaryIbanNumber;
 	}
 
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
+	public Integer getBankId() {
+		return bankId;
+	}
+
+	public void setBankId(Integer bankId) {
+		this.bankId = bankId;
 	}
 
 }

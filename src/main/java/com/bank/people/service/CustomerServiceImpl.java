@@ -24,12 +24,21 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 
+	/**
+	 * This endpoint is used for customer login functionality
+	 * 
+	 * @param userLoginRequestDto
+	 * @return CustomerResponseDto with status code and message
+	 * @throws CustomerNotFoundException
+	 * @throws InvalidCustomerIdException
+	 */
 	@Override
 	public CustomerResponseDto customerLogin(CustomerRequestDto requestDto) throws CustomerNotFoundException {
 
+		logger.info(BankConstants.CUSTOMER_LOGIN_SERVICE);
 		CustomerResponseDto responseDto = new CustomerResponseDto();
 
-		if (validCustomerId(requestDto.getCustomerId()) != BankConstants.CUSTOMER_ID_COUNT) {
+		if (!validCustomerId(requestDto.getCustomerId()).equals(BankConstants.CUSTOMER_ID_COUNT)) {
 			logger.info(BankConstants.INVALID_CUSTOMER_ID);
 			throw new CustomerNotFoundException(BankConstants.INVALID_CUSTOMER_ID);
 		} else {
@@ -48,11 +57,6 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	private Integer validCustomerId(Integer customerId) {
-		Integer count = BankConstants.EMPTY_VALUE;
-		while (customerId != BankConstants.EMPTY_VALUE) {
-			customerId = customerId / 10;
-			count++;
-		}
-		return count;
+		return (int) (Math.log10(customerId) + 1);
 	}
 }

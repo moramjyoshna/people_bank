@@ -23,11 +23,19 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 
+	/**
+	 * This endpoint is used for customer login functionality
+	 * 
+	 * @param userLoginRequestDto
+	 * @return CustomerResponseDto with status code and message
+	 * @throws CustomerNotFoundException
+	 * @throws InvalidCustomerIdException
+	 */
 	@PostMapping("/login")
 	public ResponseEntity<CustomerResponseDto> customerLogin(@RequestBody CustomerRequestDto customerRequestDto)
 			throws CustomerNotFoundException {
 		
-		logger.info(BankConstants.LOGIN_CONTROLLER);
+		logger.info(BankConstants.CUSTOMER_LOGIN_CONTROLLER);
 		CustomerResponseDto responseDto = customerService.customerLogin(customerRequestDto);
 		return new ResponseEntity<>(responseDto, HttpStatus.OK);
 	}

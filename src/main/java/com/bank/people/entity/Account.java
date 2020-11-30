@@ -14,7 +14,7 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer accountId;
 	private String ibanNumber;
-	private Integer customerid;
+	private Integer customerId;
 	private Integer bankId;
 
 	public Integer getAccountId() {
@@ -33,12 +33,12 @@ public class Account {
 		this.ibanNumber = ibanNumber;
 	}
 
-	public Integer getCustomerid() {
-		return customerid;
+	public Integer getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomerid(Integer customerid) {
-		this.customerid = customerid;
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 	public Integer getBankId() {
