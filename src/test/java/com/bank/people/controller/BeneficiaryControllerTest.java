@@ -44,17 +44,20 @@ public class BeneficiaryControllerTest {
 
 	@BeforeAll
 	public void setup() {
-		updateBeneficiaryRequestDto.setBeneficiaryIbanNumber("SA12 1000 099 12345");
-		updateBeneficiaryRequestDto.setBeneficiaryName("Manisha");;
+		updateBeneficiaryRequestDto.setBeneficiaryIbanNumber("SAAD 1000 0991 1234 5345");
+		updateBeneficiaryRequestDto.setBeneficiaryName("Manisha");
+		;
 
 		updateBeneficiaryResponseDto.setMessage("Success");
 		updateBeneficiaryResponseDto.setStatusCode("200");
 	}
-	
+
 	@Test
 	void testUpdateBeneficiary() throws BeneficaryNotFoundException, IbanNumberNotFoundException {
-		Mockito.when(beneficiaryService.updateBeneficiary(Mockito.any(),Mockito.anyInt())).thenReturn(updateBeneficiaryResponseDto);
-		ResponseEntity<UpdateBeneficiaryResponseDto> actual = beneficiaryController.updateBeneficiary(updateBeneficiaryRequestDto, 1);
+		Mockito.when(beneficiaryService.updateBeneficiary(Mockito.any(), Mockito.anyInt()))
+				.thenReturn(updateBeneficiaryResponseDto);
+		ResponseEntity<UpdateBeneficiaryResponseDto> actual = beneficiaryController
+				.updateBeneficiary(updateBeneficiaryRequestDto, 1);
 		Assert.assertEquals(HttpStatus.OK, actual.getStatusCode());
 	}
 
@@ -70,7 +73,7 @@ public class BeneficiaryControllerTest {
 		Assert.assertEquals(200, response.getStatusCodeValue());
 		Assert.assertEquals(BankConstants.BENEFICIARY_REMOVED_SUCCESSFULLY, response.getBody().getMessage());
 	}
-	
+
 	@Test
 	public void testGetBeneficiaryList() throws BeneficiariesNotFound, CustomerNotFoundException {
 		List<BeneficiaryResponseDto> dtos = new ArrayList<>();
@@ -79,7 +82,8 @@ public class BeneficiaryControllerTest {
 		beneficiaryResponseDto.setIbanNumber("ESOP 1234");
 		beneficiaryResponseDto.setBankName("People Bank");
 		Mockito.when(beneficiaryService.getBeneficiaryList(1, 1)).thenReturn(dtos);
-		ResponseEntity<List<BeneficiaryResponseDto>> beneficiaries = beneficiaryController.getBeneficiaryList(beneficiaryId,pageNumber);
+		ResponseEntity<List<BeneficiaryResponseDto>> beneficiaries = beneficiaryController
+				.getBeneficiaryList(beneficiaryId, pageNumber);
 		Assert.assertEquals(HttpStatus.OK, beneficiaries.getStatusCode());
 
 	}

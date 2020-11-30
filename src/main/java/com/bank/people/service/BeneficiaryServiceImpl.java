@@ -173,7 +173,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 		}
 
 		Beneficiary beneficiary = new Beneficiary();
-		beneficiary.setAccountId(beneficiaryRequestDto.getCustomerId());
+		beneficiary.setAccountId(customerAccount.get().getAccountId());
 		beneficiary.setCustomerId(beneficiaryRequestDto.getCustomerId());
 		beneficiary.setBeneficiaryIbanNumber(beneficiaryRequestDto.getBeneficiaryIbanNumber());
 		beneficiary.setBeneficiaryName(beneficiaryRequestDto.getBeneficiaryName());

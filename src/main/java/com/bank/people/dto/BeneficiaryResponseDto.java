@@ -1,5 +1,8 @@
 package com.bank.people.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BeneficiaryResponseDto {
 	private Integer beneficiaryId;
 	private String beneficiaryName;
