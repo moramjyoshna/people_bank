@@ -27,7 +27,15 @@ public class BeneficiaryController {
 
 	@Autowired
 	BeneficiaryService beneficiaryService;
-
+	
+	/**
+	 * This endpoint is used to remove a beneficiary
+	 * 
+	 * @param beneficiaryId
+	 * @return RemoveBeneficiaryResponseDto with status code and message
+	 * @throws RemoveBeneficaryException
+	 * @throws BeneficaryNotFoundException
+	 */
 	@DeleteMapping("/{beneficiaryId}")
 	public ResponseEntity<RemoveBeneficiaryResponseDto> deleteBeneficiary(@PathVariable Integer beneficiaryId)
 			throws RemoveBeneficaryException, BeneficaryNotFoundException {
