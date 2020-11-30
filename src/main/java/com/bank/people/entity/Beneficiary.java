@@ -16,6 +16,7 @@ public class Beneficiary {
 	private String beneficiaryName;
 	private Integer customerid;
 	private Integer accountId;
+	private String beneficiaryIbanNumber;
 
 	public Integer getBeneficiaryId() {
 		return beneficiaryId;
@@ -47,6 +48,13 @@ public class Beneficiary {
 
 	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
+	}
+	public String getBeneficiaryIbanNumber() {
+		return beneficiaryIbanNumber;
+	}
+
+	public void setBeneficiaryIbanNumber(String beneficiaryIbanNumber) {
+		this.beneficiaryIbanNumber = beneficiaryIbanNumber;
 	}
 
 }
