@@ -14,8 +14,10 @@ public class Beneficiary {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer beneficiaryId;
 	private String beneficiaryName;
-	private Integer customerid;
+	private Integer customerId;
 	private Integer accountId;
+	private String beneficiaryIbanNumber;
+	private Integer bankId;
 
 	public Integer getBeneficiaryId() {
 		return beneficiaryId;
@@ -33,12 +35,12 @@ public class Beneficiary {
 		this.beneficiaryName = beneficiaryName;
 	}
 
-	public Integer getCustomerid() {
-		return customerid;
+	public Integer getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomerid(Integer customerid) {
-		this.customerid = customerid;
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 	public Integer getAccountId() {
@@ -47,6 +49,22 @@ public class Beneficiary {
 
 	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
+	}
+
+	public String getBeneficiaryIbanNumber() {
+		return beneficiaryIbanNumber;
+	}
+
+	public void setBeneficiaryIbanNumber(String beneficiaryIbanNumber) {
+		this.beneficiaryIbanNumber = beneficiaryIbanNumber;
+	}
+
+	public Integer getBankId() {
+		return bankId;
+	}
+
+	public void setBankId(Integer bankId) {
+		this.bankId = bankId;
 	}
 
 }

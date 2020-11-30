@@ -17,4 +17,11 @@ public class GlobalExceptionHandler extends Exception {
 		ErrorResponse error = new ErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<>(error, HttpStatus.OK);
 	}
+	
+	@ExceptionHandler(BeneficiaryException.class)
+	public ResponseEntity<ErrorResponse> BeneficiaryException(BeneficiaryException e, WebRequest request) {
+
+		ErrorResponse error = new ErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND.value());
+		return new ResponseEntity<>(error, HttpStatus.OK);
+	}
 }
