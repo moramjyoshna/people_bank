@@ -16,7 +16,6 @@ import com.bank.people.util.BankConstants;
 
 import org.springframework.http.HttpStatus;
 
-import com.bank.people.controller.BeneficiaryController;
 import com.bank.people.dto.RemoveBeneficiaryResponseDto;
 import com.bank.people.exception.BeneficaryNotFoundException;
 import com.bank.people.exception.IbanNumberNotFoundException;
@@ -36,20 +35,21 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 	AccountRepository accountRepository;
 
 	@Override
-	public RemoveBeneficiaryResponseDto deleteBeneficiary(Integer beneficiaryId) throws RemoveBeneficaryException, BeneficaryNotFoundException {
-		
+	public RemoveBeneficiaryResponseDto deleteBeneficiary(Integer beneficiaryId)
+			throws RemoveBeneficaryException, BeneficaryNotFoundException {
+
 		Optional<Beneficiary> beneficiary = beneficiaryRepository.findById(beneficiaryId);
-		if(!beneficiary.isPresent()) {
-		 throw new BeneficaryNotFoundException(BankConstants.BENEFICIARY_ID_DOES_NOT_EXISTS);
+		if (!beneficiary.isPresent()) {
+			throw new BeneficaryNotFoundException(BankConstants.BENEFICIARY_DOES_NOT_EXISTS);
 		}
 
 		try {
 			beneficiaryRepository.deleteById(beneficiaryId);
 			logger.info(BankConstants.BENEFICIARY_REMOVED_SUCCESSFULLY);
-			RemoveBeneficiaryResponseDto response = new RemoveBeneficiaryResponseDto();
-			response.setMessage(BankConstants.BENEFICIARY_REMOVED_SUCCESSFULLY);
-			response.setStatusCode(HttpStatus.OK.value());
-			return response;
+			RemoveBeneficiaryResponseDto responseDto = new RemoveBeneficiaryResponseDto();
+			responseDto.setMessage(BankConstants.BENEFICIARY_REMOVED_SUCCESSFULLY);
+			responseDto.setStatusCode(HttpStatus.OK.value());
+			return responseDto;
 		} catch (Exception e) {
 			logger.info(BankConstants.FAILED_TO_REMOVE_BENEFICIARY);
 			throw new RemoveBeneficaryException(BankConstants.FAILED_TO_REMOVE_BENEFICIARY);

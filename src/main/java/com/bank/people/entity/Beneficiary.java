@@ -38,10 +38,6 @@ public class Beneficiary {
 		return customerId;
 	}
 
-	public void setCustomerid(Integer customerId) {
-		this.customerId = customerId;
-	}
-
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -55,6 +51,10 @@ public class Beneficiary {
 
 	public void setBeneficiaryIbanNumber(String beneficiaryIbanNumber) {
 		this.beneficiaryIbanNumber = beneficiaryIbanNumber;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 }

@@ -32,9 +32,8 @@ public class GlobalExceptionHandler extends Exception {
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 	
-	@ExceptionHandler(IbanNumberNotFoundException.class)
-	public ResponseEntity<ErrorResponse> ibanNumberNotFoundException(IbanNumberNotFoundException e, WebRequest request) {
-
+	@ExceptionHandler(CustomerNotFoundException.class)
+	public ResponseEntity<ErrorResponse> customerNotFoundException(CustomerNotFoundException e, WebRequest request) {
 		ErrorResponse error = new ErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}

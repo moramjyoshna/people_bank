@@ -1,7 +1,5 @@
 package com.bank.people.controller;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -15,22 +13,25 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.bank.people.dto.RemoveBeneficiaryResponseDto;
 import com.bank.people.dto.UpdateBeneficiaryRequestDto;
 import com.bank.people.dto.UpdateBeneficiaryResponseDto;
 import com.bank.people.exception.BeneficaryNotFoundException;
 import com.bank.people.exception.IbanNumberNotFoundException;
+import com.bank.people.exception.RemoveBeneficaryException;
 import com.bank.people.service.BeneficiaryService;
+import com.bank.people.util.BankConstants;
 
 @ExtendWith(MockitoExtension.class)
 @TestInstance(Lifecycle.PER_CLASS)
-class BeneficiaryControllerTest {
+public class BeneficiaryControllerTest {
 
 	@Mock
 	BeneficiaryService beneficiaryService;
 
 	@InjectMocks
 	BeneficiaryController beneficiaryController;
-
+	Integer beneficiaryId = 1;
 	UpdateBeneficiaryRequestDto updateBeneficiaryRequestDto = new UpdateBeneficiaryRequestDto();
 	UpdateBeneficiaryResponseDto updateBeneficiaryResponseDto = new UpdateBeneficiaryResponseDto();
 
@@ -38,7 +39,7 @@ class BeneficiaryControllerTest {
 	public void setup() {
 		updateBeneficiaryRequestDto.setBeneficiaryIbanNumber("SA12 1000 099 12345");
 		updateBeneficiaryRequestDto.setBeneficiaryName("Manisha");;
-		
+
 		updateBeneficiaryResponseDto.setMessage("Success");
 		updateBeneficiaryResponseDto.setStatusCode("200");
 	}
@@ -48,6 +49,19 @@ class BeneficiaryControllerTest {
 		Mockito.when(beneficiaryService.updateBeneficiary(Mockito.any(),Mockito.anyInt())).thenReturn(updateBeneficiaryResponseDto);
 		ResponseEntity<UpdateBeneficiaryResponseDto> actual = beneficiaryController.updateBeneficiary(updateBeneficiaryRequestDto, 1);
 		Assert.assertEquals(HttpStatus.OK, actual.getStatusCode());
+	}
+
+	@Test
+	public void removeBeneficiaryOK() throws RemoveBeneficaryException, BeneficaryNotFoundException {
+		RemoveBeneficiaryResponseDto responseDto = new RemoveBeneficiaryResponseDto();
+		responseDto.setMessage(BankConstants.BENEFICIARY_REMOVED_SUCCESSFULLY);
+		responseDto.setStatusCode(HttpStatus.OK.value());
+		Mockito.when(beneficiaryService.deleteBeneficiary(Mockito.any())).thenReturn(responseDto);
+
+		ResponseEntity<RemoveBeneficiaryResponseDto> response = beneficiaryController.deleteBeneficiary(beneficiaryId);
+		// expected actual
+		Assert.assertEquals(200, response.getStatusCodeValue());
+		Assert.assertEquals(BankConstants.BENEFICIARY_REMOVED_SUCCESSFULLY, response.getBody().getMessage());
 	}
 
 }
