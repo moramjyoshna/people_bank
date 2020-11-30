@@ -37,10 +37,12 @@ public class Beneficiary {
 
 	public Integer getCustomerId() {
 		return customerId;
+
 	}
 
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
+
 	}
 
 	public Integer getAccountId() {
