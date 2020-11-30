@@ -1,11 +1,14 @@
 package com.bank.people.service;
 
+import com.bank.people.dto.UpdateBeneficiaryRequestDto;
+import com.bank.people.dto.UpdateBeneficiaryResponseDto;
+import com.bank.people.dto.RemoveBeneficiaryResponseDto;
+import com.bank.people.exception.BeneficaryNotFoundException;
+import com.bank.people.exception.IbanNumberNotFoundException;
 import java.util.List;
 
 import com.bank.people.dto.BeneficiaryRequestDto;
 import com.bank.people.dto.BeneficiaryResponseDto;
-import com.bank.people.dto.RemoveBeneficiaryResponseDto;
-import com.bank.people.exception.BeneficaryNotFoundException;
 import com.bank.people.exception.BeneficiariesNotFound;
 import com.bank.people.exception.BeneficiaryException;
 import com.bank.people.exception.CustomerNotFoundException;
@@ -20,5 +23,7 @@ public interface BeneficiaryService {
 			throws BeneficiariesNotFound, CustomerNotFoundException;
 	
 	BeneficiaryResponseDto addBeneficiary(BeneficiaryRequestDto beneficiaryRequestDto) throws BeneficiaryException;
+
+	public UpdateBeneficiaryResponseDto updateBeneficiary(UpdateBeneficiaryRequestDto updateBeneficiaryRequestDto, Integer beneficiaryId) throws BeneficaryNotFoundException, IbanNumberNotFoundException;
 
 }

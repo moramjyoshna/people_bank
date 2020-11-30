@@ -52,7 +52,6 @@ public class Beneficiary {
 	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
 	}
-
 	public String getBeneficiaryIbanNumber() {
 		return beneficiaryIbanNumber;
 	}

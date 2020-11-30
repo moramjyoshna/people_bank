@@ -18,4 +18,6 @@ public interface BeneficiaryRepository extends JpaRepository<Beneficiary, Intege
 
 	Optional<Beneficiary> findByCustomerIdAndBeneficiaryIbanNumber(Integer customerId, String beneficiaryIbanNumber);
 
+	Optional<Beneficiary> findByBeneficiaryId(Integer beneficiaryId);
+
 }
