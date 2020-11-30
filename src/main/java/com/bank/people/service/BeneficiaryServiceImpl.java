@@ -38,12 +38,12 @@ import com.bank.people.util.BankConstants;
 
 @Service
 public class BeneficiaryServiceImpl implements BeneficiaryService {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(BeneficiaryServiceImpl.class);
 
 	@Autowired
 	BeneficiaryRepository beneficiaryRepository;
-	
+
 	@Autowired
 	AccountRepository accountRepository;
 
@@ -52,7 +52,6 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 
 	@Autowired
 	CustomerRepository customerRepository;
-
 
 	@Override
 	public RemoveBeneficiaryResponseDto deleteBeneficiary(Integer beneficiaryId)
@@ -75,25 +74,25 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 			throw new RemoveBeneficaryException(BankConstants.FAILED_TO_REMOVE_BENEFICIARY);
 		}
 	};
-	
+
 	@Override
 	public UpdateBeneficiaryResponseDto updateBeneficiary(UpdateBeneficiaryRequestDto updateBeneficiaryRequestDto,
 			Integer beneficiaryId) throws BeneficaryNotFoundException, IbanNumberNotFoundException {
 		logger.info(BankConstants.BENEFICIARY_UPDATE_SERVICE);
 		UpdateBeneficiaryResponseDto updateBeneficiaryResponseDto = new UpdateBeneficiaryResponseDto();
 		Optional<Beneficiary> beneficiary = beneficiaryRepository.findByBeneficiaryId(beneficiaryId);
-		if(beneficiary.isPresent()){
+		if (beneficiary.isPresent()) {
 			Optional<Account> account = accountRepository.findByAccountId(beneficiary.get().getAccountId());
-			if(account.get().getIbanNumber().equals(updateBeneficiaryRequestDto.getBeneficiaryIbanNumber())) {
-			beneficiary.get().setBeneficiaryId(beneficiaryId);
-			beneficiary.get().setBeneficiaryName(updateBeneficiaryRequestDto.getBeneficiaryName());
-			beneficiary.get().setBeneficiaryIbanNumber(updateBeneficiaryRequestDto.getBeneficiaryIbanNumber());
-			beneficiaryRepository.save(beneficiary.get());
-			}else {
+			if (account.get().getIbanNumber().equals(updateBeneficiaryRequestDto.getBeneficiaryIbanNumber())) {
+				beneficiary.get().setBeneficiaryId(beneficiaryId);
+				beneficiary.get().setBeneficiaryName(updateBeneficiaryRequestDto.getBeneficiaryName());
+				beneficiary.get().setBeneficiaryIbanNumber(updateBeneficiaryRequestDto.getBeneficiaryIbanNumber());
+				beneficiaryRepository.save(beneficiary.get());
+			} else {
 				logger.info(BankConstants.IBAN_NUMBER_NOT_FOUND);
 				throw new IbanNumberNotFoundException(BankConstants.IBAN_NUMBER_DOES_NOT_EXISTS);
 			}
-		}else {
+		} else {
 			logger.info(BankConstants.BENEFICIARYID_NOT_FOUND);
 			throw new BeneficaryNotFoundException(BankConstants.BENEFICIARY_ID_DOES_NOT_EXISTS);
 		}
@@ -109,7 +108,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 		Pageable paging = PageRequest.of(pageNumber, BankConstants.SIZE, Sort.by("beneficiaryName"));
 		Optional<Customer> customer = customerRepository.findByCustomerId(customerId);
 		if (!customer.isPresent()) {
-			throw new CustomerNotFoundException(BankConstants.CUSTOMER_NOT_FOUND);
+			throw new CustomerNotFoundException(BankConstants.VIEW_CUSTOMER_NOT_FOUND);
 		}
 		Optional<List<Beneficiary>> beneficiaryList = beneficiaryRepository.findByCustomerId(customerId, paging);
 		if (!beneficiaryList.isPresent()) {

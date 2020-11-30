@@ -17,7 +17,6 @@ public class BankConstants {
 	public static final String INVALID_BENEFICIARY_NUMBER = "Please enter a valid Beneficiary account number which contains first 4 digits as letters and next 16 digists as numbers";
 	public static final String NO_CUSTOMER_FOUND = "Invalid customer";
 	public static final String BANK_CODE_NOT_EXISTS = "Such bank not exists";
-
 	public static final String BENEFICIARY_UPDATE_SERVICE = "Inside Beneficiary service";
 	public static final String BENEFICIARYID_NOT_FOUND = "Beneficiary ID not found";
 
@@ -30,7 +29,8 @@ public class BankConstants {
 	public static final String INVALID_CUSTOMER_ID = "please provide valid customer id";
 	public static final String CUSTOMER_NOT_FOUND = "invalid customer id or password";
 	public static final String LOGIN_SUCCESS = "logged in successfully";
-	public static final String LOGIN_CONTROLLER = " Inside Login Controller";
+	public static final String CUSTOMER_LOGIN_CONTROLLER = "Inside Customer Login Controller";
+	public static final String CUSTOMER_LOGIN_SERVICE = "Inside Customer Login Service";
 	public static final int CUSTOMER_ID_COUNT = 6;
 	public static final int EMPTY_VALUE = 0;
 	public static final String IBAN_NUMBER_DOES_NOT_EXISTS = "IBAN Number does not exist!";
@@ -44,5 +44,4 @@ public class BankConstants {
 	public static final String LOG_EXIST_BENEFICIARY_CONTROLLER = "Entered into Benifitiary controller getBeneficiaryList method ";
 	public static final String LOG_EXISTING_BENEFICIARY_CONTROLLER = "Exiting from Benifitiary controller getBeneficiaryList method ";
 	public static final String VIEW_CUSTOMER_NOT_FOUND = "Given customer is not found";
-
 }
