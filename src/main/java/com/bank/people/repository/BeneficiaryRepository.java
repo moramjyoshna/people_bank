@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.bank.people.entity.Beneficiary;
 
 @Repository
-public interface BeneficiaryRepositroy extends JpaRepository<Beneficiary, Integer>{
+public interface BeneficiaryRepository extends JpaRepository<Beneficiary, Integer>{
+	
 
 	Optional<Beneficiary> findByBeneficiaryId(Integer beneficiaryId);
 	
