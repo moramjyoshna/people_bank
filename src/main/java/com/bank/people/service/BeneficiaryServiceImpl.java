@@ -106,7 +106,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 		Pageable paging = PageRequest.of(pageNumber, BankConstants.SIZE, Sort.by("beneficiaryName"));
 		Optional<Customer> customer = customerRepository.findByCustomerId(customerId);
 		if (!customer.isPresent()) {
-			throw new CustomerNotFoundException(BankConstants.CUSTOMER_NOT_FOUND);
+			throw new CustomerNotFoundException(BankConstants.VIEW_CUSTOMER_NOT_FOUND);
 		}
 		Optional<List<Beneficiary>> beneficiaryList = beneficiaryRepository.findByCustomerId(customerId,paging);
 		if (!beneficiaryList.isPresent()) {
