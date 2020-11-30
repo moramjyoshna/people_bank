@@ -12,4 +12,6 @@ public class BankConstants {
 	public static final String LOGIN_CONTROLLER = " Inside Login Controller";
 	public static final int CUSTOMER_ID_COUNT = 6;
 	public static final int EMPTY_VALUE = 0;
+	public static final Integer SIZE = 5;
+	public static final String NO_BENEFICIARY_FOUND = "No Beneficiaries found for the customer";
 }

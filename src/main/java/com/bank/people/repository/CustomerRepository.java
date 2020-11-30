@@ -11,4 +11,6 @@ import com.bank.people.entity.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
 	Optional<Customer> findByCustomerIdAndPassword(Integer customerId, String password);
+	
+	Optional<Customer>  findByCustomerId(Integer customerId);
 }
